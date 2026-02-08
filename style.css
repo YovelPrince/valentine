@@ -1,13 +1,13 @@
 body {
   margin: 0;
-  background: linear-gradient(135deg, #ffe6eb, #fff0f5);
+  background: #ffe6eb;
   font-family: 'Comic Sans MS', cursive;
-  overflow: hidden;
+  height: 100vh;
 }
 
-/* Center card & gallery */
+/* Card & gallery */
 .card, .gallery {
-  background: white;
+  background: #fff0f5;
   padding: 30px;
   border-radius: 20px;
   text-align: center;
@@ -16,58 +16,112 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 10;
 }
 
+/* Image */
 .photo {
   width: 200px;
   border-radius: 15px;
   margin: 20px 0;
 }
 
+/* Buttons container */
+.buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* BOTH buttons same size */
 .buttons button {
-  padding: 10px 25px;
+  padding: 12px 28px;
   font-size: 18px;
   border-radius: 10px;
   border: none;
   cursor: pointer;
+  min-width: 120px;
 }
 
+/* YES */
 #yesBtn {
   background-color: #ff4d6d;
   color: white;
 }
 
-/* Floating NO button */
+/* NO — normal at start */
 #noBtn {
   background-color: #999;
   color: white;
-  position: fixed;
-  z-index: 9999;
 }
 
-/* Hide elements */
+/* Hide */
 .hidden {
   display: none;
 }
 
-/* Gallery styling */
+/* Gallery */
+/* Gallery grid */
 .gallery .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, auto);   /* 2 rows */
   gap: 15px;
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;  /* keeps it compact & centered */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.gallery img {
+/* Image wrapper */
+.gallery .grid img {
   width: 100%;
+  height: 200px;          /* fixed height */
+  object-fit: cover;     /* keeps aspect ratio */
   border-radius: 15px;
 }
 
-/* Confetti canvas */
+.gallery img {
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Confetti */
 canvas {
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
-  z-index: 5;
+}
+.image-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+/* Main photo */
+.photo {
+  width: 200px;
+  border-radius: 15px;
+}
+
+/* Small visible gif */
+.gif {
+  width: 80px;   /* slightly bigger, still cute */
+  height: auto;
+}
+
+.gif {
+  animation: float 2s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
 }

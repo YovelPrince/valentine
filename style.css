@@ -1,0 +1,73 @@
+body {
+  margin: 0;
+  background: linear-gradient(135deg, #ffe6eb, #fff0f5);
+  font-family: 'Comic Sans MS', cursive;
+  overflow: hidden;
+}
+
+/* Center card & gallery */
+.card, .gallery {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+.photo {
+  width: 200px;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+
+.buttons button {
+  padding: 10px 25px;
+  font-size: 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background-color: #ff4d6d;
+  color: white;
+}
+
+/* Floating NO button */
+#noBtn {
+  background-color: #999;
+  color: white;
+  position: fixed;
+  z-index: 9999;
+}
+
+/* Hide elements */
+.hidden {
+  display: none;
+}
+
+/* Gallery styling */
+.gallery .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 15px;
+}
+
+/* Confetti canvas */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 5;
+}

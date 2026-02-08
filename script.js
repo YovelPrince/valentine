@@ -3,33 +3,37 @@ const yesBtn = document.getElementById("yesBtn");
 const card = document.getElementById("proposalCard");
 const gallery = document.getElementById("gallery");
 
-// Place NO button outside card initially
-noBtn.style.left = "60%";
-noBtn.style.top = "70%";
+let isFloating = false;
 
 // NO button runs away
-noBtn.addEventListener("mouseover", () => {
-  const btnWidth = noBtn.offsetWidth;
-  const btnHeight = noBtn.offsetHeight;
+noBtn.addEventListener("mouseenter", () => {
 
-  const x = Math.random() * (window.innerWidth - btnWidth);
-  const y = Math.random() * (window.innerHeight - btnHeight);
+  // Convert to floating ONLY once
+  if (!isFloating) {
+    const rect = noBtn.getBoundingClientRect();
+    noBtn.style.position = "fixed";
+    noBtn.style.left = rect.left + "px";
+    noBtn.style.top = rect.top + "px";
+    isFloating = true;
+  }
+
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
 
   noBtn.style.left = `${x}px`;
   noBtn.style.top = `${y}px`;
 });
 
-// YES button action
+// YES button
 yesBtn.addEventListener("click", () => {
   startConfetti();
   card.classList.add("hidden");
   gallery.classList.remove("hidden");
 });
 
-// Confetti animation
+// CONFETTI
 const canvas = document.getElementById("confetti");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
@@ -42,7 +46,7 @@ function startConfetti() {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       r: Math.random() * 6 + 2,
-      d: Math.random() * 6 + 2,
+      d: Math.random() * 10,
       color: `hsl(${Math.random() * 360}, 100%, 50%)`
     });
   }
